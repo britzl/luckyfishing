@@ -1,0 +1,69 @@
+local gesture = require "ludobits.m.gesture"
+local geometry = require "ludobits.m.geometry"
+local hashes = require "game.hashes"
+local fish_data = require "game.fish_data"
+
+local function spawn_fish(self)
+	local selected_type = 1
+	local accumulated_frequency = fish_data[1].frequency
+	for type,fish in pairs(fish_data) do
+		--print(fish.name, fish.frequency, accumulated_frequency)
+		if math.random(1, accumulated_frequency + fish.frequency) >= accumulated_frequency then
+			--print("SELECTED", fish.name)
+			selected_type = type
+		end
+		accumulated_frequency = accumulated_frequency + fish.frequency
+	end
+
+	local fish = fish_data[selected_type]
+	local depth = math.random(fish.depth.max, fish.depth.min)
+	local position = vmath.vector3(math.random(0, 1136), depth, 0)
+	factory.create("#fish_factory", position, nil, { type = selected_type }, 1)
+end
+
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	math.randomseed(os.time())
+	for i=1, 100 do
+		spawn_fish(self)
+	end
+	msg.post("@render:", "clear_color", { color = vmath.vector4(1, 1, 1, 1) })
+end
+
+function final(self)
+	msg.post(".", "release_input_focus")
+end
+
+function on_input(self, action_id, action)
+	local g = gesture.on_input(self, action_id, action)
+	if g and g.swipe then
+		local to = g.swipe.to
+		local from = g.swipe.from
+		local dx = to.x - from.x
+		local dy = from.y - to.y
+		local angle = math.atan2(dx, dy)
+		local distance = math.sqrt(math.abs(dx) ^ 2 + math.abs(dy) ^ 2)
+		print(dx, dy, distance, geometry.to_degrees(angle))
+		
+		msg.post("game:/hook/root", hashes.THROW, { angle = angle, power = distance / (g.swipe.time * 0.5), line_length = 400 })
+	elseif g and g.tap then
+		msg.post("game:/hook/root", hashes.REEL_IN)
+	elseif action_id == hash("reset") and action.released then
+		print("resetting")
+		msg.post("game:/hook/root", hashes.RESET, { force = true })
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hashes.COLLISION_RESPONSE then
+		if message.group == hashes.HOOK then
+			msg.post("game:/hook/root", hashes.RESET)
+		end
+	end
+end
+
+function on_reload(self)
+    -- Add reload-handling code here
+    -- Remove this function if not needed
+end

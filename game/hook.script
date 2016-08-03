@@ -1,0 +1,108 @@
+local geometry = require "ludobits.m.geometry"
+local hashes = require "game.hashes"
+
+local function distance_to_boat(self)
+	return geometry.distance(go.get_world_position(), self.original_world_position)
+end
+
+local function is_in_water()
+	return go.get_world_position().y < 0
+end
+
+function init(self)
+	self.original_position = go.get_position()
+	self.original_world_position = go.get_world_position()
+	msg.post("camera", "acquire_camera_focus")
+	self.gravity = vmath.vector3(0, -550, 0)
+	self.buoyancy = vmath.vector3(0, 100, 0)
+end
+
+function final(self)
+	msg.post("camera", "release_camera_focus")
+end
+
+local function update_color()
+	local pos = go.get_position()
+	local c = 1
+	if pos.y < 0 then
+		c = math.min(1, math.max(0, 1000 - (math.abs(pos.y) / 4)) / 1000) 
+	end
+	msg.post("@render:", "clear_color", { color = vmath.vector4(c, c, c, 1) })
+end
+
+function update(self, dt)
+	if self.fishing then
+		local in_water = is_in_water()
+		local pos = go.get_position()
+
+		self.force = self.force + self.gravity * dt
+		self.force = in_water and (self.force + self.buoyancy * dt) or self.force
+
+		local fc = in_water and 0.99 or 0.85
+		local friction = vmath.vector3(-self.force.x, -self.force.y, 0) * fc
+		self.force = self.force + friction * dt
+
+		pos = pos + self.force * dt
+		go.set_position(pos)
+		
+		local distance = geometry.distance(go.get_world_position(), self.original_world_position)
+		if distance > 400 then
+			--pos = pos - self.force * dt * 0.9
+			--go.set_position(pos)
+		end
+		--print(distance)
+
+		--[[local fc = in_water and 0.95 or 0.85
+		local friction = vmath.vector3(-self.force.x, -self.force.y, 0) * fc
+		self.force = self.force + friction * dt
+		
+		pos = pos + self.gravity * dt
+		pos = pos + self.force * dt
+		if in_water then
+			pos = pos + self.buoyancy * dt
+		end
+	
+		go.set_position(pos)--]]
+		go.set_rotation(geometry.angle_towards(self.original_world_position, pos), "hook")
+	end
+	update_color()
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hashes.THROW then
+		local degrees = geometry.to_degrees(message.angle)
+		self.line_length = message.line_length
+		if distance_to_boat(self) > 10 then
+			print("HOOK NOT ON BOAT")
+		elseif degrees < 90 or degrees > 180 then
+			print("BAD THROW")
+		else 
+			local speed = message.power * 0.6
+			speed = math.min(speed, 1500)
+			print(speed)
+			--speed = 200
+			self.force = vmath.vector3(speed * math.sin(message.angle), -speed * math.cos(message.angle), 0)
+			self.fishing = true
+			self.hooked_fish = {}
+			self.weight = 0
+		end
+	elseif message_id == hashes.REEL_IN then
+		if is_in_water() then
+			local hook_pos = go.get_world_position()
+			local direction = vmath.normalize(self.original_world_position - hook_pos)
+			direction.z = 0
+			self.force = self.force + direction * 200
+			self.reeling_in = true
+		end
+	elseif message_id == hashes.RESET then
+		if self.reeling_in or message.force then
+			go.set_position(self.original_position)
+			self.fishing = false
+			self.reeling_in = false
+			msg.post("line", hashes.RESET)
+		end
+	elseif message_id == hashes.HOOKED_FISH then
+		self.weight = self.weight + 1
+		--self.force.x = self.force.x + math.random(-100 * self.weight, 100 * self.weight)
+	end
+end

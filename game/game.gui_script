@@ -1,0 +1,49 @@
+local hashes = require "game.hashes"
+local flow = require "ludobits.m.flow"
+
+function init(self)
+	self.log_messages = 0
+	self.visual_score = 0
+	self.score = 0
+	self.score_node = gui.get_node("score")
+	self.log_node = gui.get_node("log")
+	gui.set_enabled(self.log_node, false)
+end
+
+function final(self)
+end
+
+function update(self, dt)
+	flow.update()
+	local score_diff = self.score - self.visual_score
+	if score_diff ~= 0 then
+		self.visual_score = self.visual_score + math.ceil(score_diff * dt)
+		gui.set_text(self.score_node, tostring(self.visual_score))
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	flow.on_message(message_id, message, sender)
+	if message_id == hashes.UPDATE_SCORE then
+		
+		flow.start(function()
+			self.log_messages = self.log_messages + 1 
+			local delay = 0.4 * (self.log_messages - 1)
+			flow.delay(delay)
+			
+			local log = gui.clone(self.log_node)
+			gui.set_enabled(log, true)
+			gui.set_text(log, message.text)
+			gui.animate(log, gui.PROP_POSITION, gui.get_position(log) + vmath.vector3(0, 200, 0), gui.EASING_OUTQUAD, 1.2, 0, function()
+				self.score = self.score + message.score
+				self.log_messages = self.log_messages - 1 
+				gui.delete_node(log)
+			end)
+		end)
+	end
+end
+
+function on_reload(self)
+    -- Add input-handling code here
+    -- Remove this function if not needed
+end

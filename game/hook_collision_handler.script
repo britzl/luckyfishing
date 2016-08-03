@@ -1,0 +1,10 @@
+local geometry = require "ludobits.m.geometry"
+local hashes = require "game.hashes"
+
+function on_message(self, message_id, message, sender)
+	if message_id == hashes.COLLISION_RESPONSE then
+		if message.group == hashes.FISH then
+			msg.post("root", hashes.HOOKED_FISH)
+		end
+	end
+end

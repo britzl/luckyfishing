@@ -1,0 +1,42 @@
+images {
+  image: "/assets/images/fish2.png"
+}
+images {
+  image: "/assets/images/fish3.png"
+}
+images {
+  image: "/assets/images/fish4.png"
+}
+images {
+  image: "/assets/images/fish5.png"
+}
+images {
+  image: "/assets/images/fish6.png"
+}
+images {
+  image: "/assets/images/fish7.png"
+}
+images {
+  image: "/assets/images/hook.png"
+}
+images {
+  image: "/assets/images/fish1.png"
+}
+images {
+  image: "/assets/images/line.png"
+}
+images {
+  image: "/assets/images/dot.png"
+}
+images {
+  image: "/assets/images/wave.png"
+}
+images {
+  image: "/assets/images/cloud.png"
+}
+images {
+  image: "/assets/images/boat.png"
+}
+margin: 0
+extrude_borders: 1
+inner_padding: 0

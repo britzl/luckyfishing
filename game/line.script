@@ -1,0 +1,22 @@
+local geometry = require "ludobits.m.geometry"
+local hashes = require "game.hashes"
+
+function init(self)
+	self.hook_initial_position = go.get_world_position("hook")
+	self.line_offset = go.get_position()
+end
+
+function update(self, dt)
+	local hook_pos = go.get_world_position()
+	local distance = geometry.distance(hook_pos, self.hook_initial_position)
+	if distance > 0 then
+		go.set_scale(vmath.vector3(1, distance * 0.5, 1))
+		go.set_rotation(geometry.angle_towards(self.hook_initial_position, hook_pos))
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hashes.RESET then
+		go.set_scale(vmath.vector3(1, 1, 1))
+	end
+end

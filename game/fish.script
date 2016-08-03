@@ -1,0 +1,64 @@
+local hashes = require "game.hashes"
+local fish_data = require "game.fish_data"
+
+go.property("type", 1)
+
+local MAX_SWIM_DISTANCE = 400
+local SWIM_DEPTH_FACTOR = 0.2
+
+local function get_duration(self, distance)
+	return (fish_data[self.type] and fish_data[self.type].speed_factor or 1) * distance / 100
+end
+
+local function get_distance_factor(self)
+	return (fish_data[self.type] and fish_data[self.type].distance_factor or 2)
+end
+
+local function get_depth_factor(self)
+	return (fish_data[self.type] and fish_data[self.type].depth_factor or 0.1)
+end
+
+local function swim_to_random_position(self)
+	local to = go.get_position()
+	local current = go.get_position()
+	local mx = MAX_SWIM_DISTANCE * get_distance_factor(self)
+	local my = MAX_SWIM_DISTANCE * get_depth_factor(self)
+	if current.x < self.original_position.x then
+		to.x = math.random(self.original_position.x, self.original_position.x + mx)
+		go.set_rotation(vmath.quat_axis_angle(vmath.vector3(0, 1, 0), 180 * math.pi / 180))
+	else
+		to.x = math.random(self.original_position.x - mx, self.original_position.x)
+		go.set_rotation(vmath.quat_axis_angle(vmath.vector3(0, 1, 0), 0 * math.pi / 180))
+	end
+	to.y = math.random(self.original_position.y - my, self.original_position.y + my)
+	to.y = math.min(to.y, -50)
+
+	local dx = math.abs(to.x - current.x)
+	local dy = math.abs(to.y - current.y)
+	local distance = math.sqrt(dx * dx + dy * dy) 
+	self.last_desitination = current
+	go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, to, go.EASING_INOUTQUAD, get_duration(self, distance), 0, function()
+		swim_to_random_position(self)
+	end)
+end
+
+function init(self)
+	self.original_position = go.get_position()
+	self.last_desitination = go.get_position()
+	msg.post("#sprite", "play_animation", { id = hash("fish" .. self.type) })
+	swim_to_random_position(self)
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hashes.COLLISION_RESPONSE then
+		if message.group == hashes.HOOK then
+			msg.post("#fishtohook", "disable")
+			go.cancel_animations(".", "position")
+			msg.post(".", "set_parent", { parent_id = message.other_id, keep_world_transform = 1 })
+		elseif message.group == hashes.BOAT then
+			--msg.post("game", hashes.FISH_IN_BOAT, { type = self.type })
+			msg.post("fishlog", hashes.FISH_IN_BOAT, { type = self.type })
+			go.delete()
+		end
+	end 
+end

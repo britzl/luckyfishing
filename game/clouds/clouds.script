@@ -1,0 +1,29 @@
+go.property("clouds", 200)
+go.property("boundingbox", vmath.vector4(-3000, 200, 3000, 1500))
+
+local function move_cloud(self, id)
+	local position = go.get_position(id)
+	local scale = go.get_scale(id)
+	local duration = (position.x - self.boundingbox.x) / 50 / scale
+	go.animate(id, "position.x", go.PLAYBACK_ONCE_FORWARD, self.boundingbox.x, go.EASING_LINEAR, duration, 0, function()
+		local x = math.random(self.boundingbox.z, self.boundingbox.z * 1.5)
+		local y = math.random(self.boundingbox.y, self.boundingbox.w)
+		go.set_position(vmath.vector3(x, y, position.z), id)
+		move_cloud(self, id)
+	end)
+end
+
+local function spawn_cloud(self)
+	local scale = math.random(5, 10) / 10
+	local position = vmath.vector3(math.random(self.boundingbox.x, self.boundingbox.z), math.random(self.boundingbox.y, self.boundingbox.w), scale - 1)
+	local id = factory.create("#factory", position, nil, {}, scale)
+	move_cloud(self, id)
+end
+
+
+function init(self)
+	local area = math.abs(self.boundingbox.z - self.boundingbox.x) * math.abs(self.boundingbox.y - self.boundingbox.w)
+	for i=1, self.clouds do
+		spawn_cloud(self)
+	end
+end

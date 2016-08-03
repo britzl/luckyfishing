@@ -1,0 +1,8 @@
+function init(self)
+	local width = 66
+	for i=1,math.ceil(6000 / width) do
+		local pos = vmath.vector3(-3000 + i * width, 0, 0)
+		local id = factory.create("#factory", pos)
+		go.animate(id, "position.x", go.PLAYBACK_LOOP_FORWARD, pos.x - width, go.EASING_LINEAR, 5)
+	end
+end

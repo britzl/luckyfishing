@@ -1,0 +1,16 @@
+key_trigger {
+  input: KEY_S
+  action: "swing"
+}
+key_trigger {
+  input: KEY_R
+  action: "reset"
+}
+key_trigger {
+  input: KEY_SPACE
+  action: "touch"
+}
+mouse_trigger {
+  input: MOUSE_BUTTON_1
+  action: "touch"
+}
