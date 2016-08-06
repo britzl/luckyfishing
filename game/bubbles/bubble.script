@@ -1,0 +1,6 @@
+local types = { hash("bubble_small"), hash("bubble_large"), hash("bubble_black_small") }
+
+function init(self)
+	local id = types[math.random(1, #types)]
+	msg.post("#sprite", "play_animation", { id = id })
+end

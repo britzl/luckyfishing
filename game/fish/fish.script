@@ -1,5 +1,5 @@
 local hashes = require "game.hashes"
-local fish_data = require "game.fish_data"
+local fish_data = require "game.fish.fish_data"
 
 go.property("type", 1)
 

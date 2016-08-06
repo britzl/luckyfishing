@@ -1,7 +1,7 @@
 local gesture = require "ludobits.m.gesture"
 local geometry = require "ludobits.m.geometry"
 local hashes = require "game.hashes"
-local fish_data = require "game.fish_data"
+local fish_data = require "game.fish.fish_data"
 
 local function spawn_fish(self)
 	local selected_type = 1
@@ -18,7 +18,7 @@ local function spawn_fish(self)
 	local fish = fish_data[selected_type]
 	local depth = math.random(fish.depth.max, fish.depth.min)
 	local position = vmath.vector3(math.random(0, 1136), depth, 0)
-	factory.create("#fish_factory", position, nil, { type = selected_type }, 1)
+	factory.create(fish.factory, position, nil, { type = selected_type }, 1)
 end
 
 

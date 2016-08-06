@@ -22,7 +22,6 @@ end
 
 
 function init(self)
-	local area = math.abs(self.boundingbox.z - self.boundingbox.x) * math.abs(self.boundingbox.y - self.boundingbox.w)
 	for i=1, self.clouds do
 		spawn_cloud(self)
 	end

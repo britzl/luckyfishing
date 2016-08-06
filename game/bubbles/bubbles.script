@@ -1,0 +1,33 @@
+go.property("bubbles", 100)
+go.property("boundingbox", vmath.vector4(-3000, -25, 3000, -2500))
+
+local function animate_horizontal(id)
+end
+
+local function move_bubble(self, id)
+	local position = go.get_position(id)
+	local duration = (self.boundingbox.y - position.y) / math.random(10, 40)
+	go.cancel_animations(id, "position.x")
+	go.animate(id, "position.x", go.PLAYBACK_LOOP_PINGPONG, position.x + 5, go.EASING_INOUTSINE, 5, math.random(0,10))
+	go.animate(id, "position.y", go.PLAYBACK_ONCE_FORWARD, self.boundingbox.y, go.EASING_LINEAR, duration, 0, function()
+		local x = math.random(self.boundingbox.x, self.boundingbox.z)
+		local y = math.random(self.boundingbox.w * 1.5, self.boundingbox.w)
+		go.set_position(vmath.vector3(x, y, position.z), id)
+		move_bubble(self, id)
+	end)
+end
+
+local function spawn_bubble(self)
+	local x = math.random(self.boundingbox.x, self.boundingbox.z)
+	local y = math.random(self.boundingbox.w, self.boundingbox.y)
+	local position = vmath.vector3(x, y, 0)
+	local id = factory.create("#factory", position, nil, {}, scale)
+	move_bubble(self, id)
+end
+
+
+function init(self)
+	for i=1, self.bubbles do
+		spawn_bubble(self)
+	end
+end

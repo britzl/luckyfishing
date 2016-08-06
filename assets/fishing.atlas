@@ -37,6 +37,15 @@ images {
 images {
   image: "/assets/images/boat.png"
 }
+images {
+  image: "/assets/images/bubble_large.png"
+}
+images {
+  image: "/assets/images/bubble_small.png"
+}
+images {
+  image: "/assets/images/bubble_black_small.png"
+}
 margin: 0
 extrude_borders: 1
 inner_padding: 0
