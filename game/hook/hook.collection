@@ -1,0 +1,50 @@
+name: "hook"
+instances {
+  id: "line"
+  prototype: "/game/hook/line.go"
+  position {
+    z: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "root"
+  children: "camera"
+  children: "hook"
+  children: "line"
+  data: "components {\n  id: \"script\"\n  component: \"/game/hook/hook.script\"\n  position {\n    x: 0.0\n    y: 0.0\n    z: 0.0\n  }\n  rotation {\n    x: 0.0\n    y: 0.0\n    z: 0.0\n    w: 1.0\n  }\n}\n"
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "camera"
+  data: "components {\n  id: \"camera\"\n  component: \"/game/hook/hook.camera\"\n  position {\n    x: 0.0\n    y: 0.0\n    z: 0.0\n  }\n  rotation {\n    x: 0.0\n    y: 0.0\n    z: 0.0\n    w: 1.0\n  }\n}\n"
+  position {
+    x: -568.0
+    y: -320.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "hook"
+  data: "components {\n  id: \"script\"\n  component: \"/game/hook/hook_collision_handler.script\"\n  position {\n    x: 0.0\n    y: 0.0\n    z: 0.0\n  }\n  rotation {\n    x: 0.0\n    y: 0.0\n    z: 0.0\n    w: 1.0\n  }\n}\nembedded_components {\n  id: \"collisionobject\"\n  type: \"collisionobject\"\n  data: \"collision_shape: \\\"\\\"\\ntype: COLLISION_OBJECT_TYPE_KINEMATIC\\nmass: 0.0\\nfriction: 0.1\\nrestitution: 0.5\\ngroup: \\\"hook\\\"\\nmask: \\\"fish\\\"\\nmask: \\\"bottom\\\"\\nmask: \\\"boat\\\"\\nembedded_collision_shape {\\n  shapes {\\n    shape_type: TYPE_BOX\\n    position {\\n      x: -4.0\\n      y: -14.0\\n      z: 0.0\\n    }\\n    rotation {\\n      x: 0.0\\n      y: 0.0\\n      z: 0.0\\n      w: 1.0\\n    }\\n    index: 0\\n    count: 3\\n  }\\n  data: 3.5\\n  data: 4.0\\n  data: 10.0\\n}\\nlinear_damping: 0.0\\nangular_damping: 0.0\\nlocked_rotation: false\\n\"\n  position {\n    x: 0.0\n    y: 0.0\n    z: 0.0\n  }\n  rotation {\n    x: 0.0\n    y: 0.0\n    z: 0.0\n    w: 1.0\n  }\n}\nembedded_components {\n  id: \"sprite\"\n  type: \"sprite\"\n  data: \"tile_set: \\\"/assets/fishing.atlas\\\"\\ndefault_animation: \\\"hook\\\"\\nmaterial: \\\"/builtins/materials/sprite.material\\\"\\nblend_mode: BLEND_MODE_ALPHA\\n\"\n  position {\n    x: 0.0\n    y: 0.0\n    z: 0.0\n  }\n  rotation {\n    x: 0.0\n    y: 0.0\n    z: 0.0\n    w: 1.0\n  }\n}\n"
+  position {
+    z: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}

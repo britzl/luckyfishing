@@ -4,7 +4,10 @@ local hashes = require "game.hashes"
 function on_message(self, message_id, message, sender)
 	if message_id == hashes.COLLISION_RESPONSE then
 		if message.group == hashes.FISH then
-			msg.post("root", hashes.HOOKED_FISH)
+			msg.post("root", hashes.HOOKED_FISH, { id = message.other_id })
+		elseif message.group == hashes.BOTTOM then
+			print("hook in bottom")
+			msg.post("game:/game", hashes.HOOKED_BOTTOM)
 		end
 	end
 end

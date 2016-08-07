@@ -7,9 +7,7 @@ local function spawn_fish(self)
 	local selected_type = 1
 	local accumulated_frequency = fish_data[1].frequency
 	for type,fish in pairs(fish_data) do
-		--print(fish.name, fish.frequency, accumulated_frequency)
 		if math.random(1, accumulated_frequency + fish.frequency) >= accumulated_frequency then
-			--print("SELECTED", fish.name)
 			selected_type = type
 		end
 		accumulated_frequency = accumulated_frequency + fish.frequency
@@ -22,6 +20,13 @@ local function spawn_fish(self)
 end
 
 
+local function new_throw(self)
+	msg.post("tutorial/tutorial", hashes.TUTORIAL_SWIPE)
+	msg.post("#gui", hashes.UPDATE_LIVES, { lives = self.lives })
+	msg.post("game:/hook/root", hashes.RESET, { force = true })
+end
+
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	math.randomseed(os.time())
@@ -29,6 +34,8 @@ function init(self)
 		spawn_fish(self)
 	end
 	msg.post("@render:", "clear_color", { color = vmath.vector4(1, 1, 1, 1) })
+	self.lives = 2
+	new_throw(self)
 end
 
 function final(self)
@@ -47,6 +54,7 @@ function on_input(self, action_id, action)
 		print(dx, dy, distance, geometry.to_degrees(angle))
 		
 		msg.post("game:/hook/root", hashes.THROW, { angle = angle, power = distance / (g.swipe.time * 0.5), line_length = 400 })
+		msg.post("tutorial/tutorial", hashes.TUTORIAL_TAP)
 	elseif g and g.tap then
 		msg.post("game:/hook/root", hashes.REEL_IN)
 	elseif action_id == hash("reset") and action.released then
@@ -59,6 +67,20 @@ function on_message(self, message_id, message, sender)
 	if message_id == hashes.COLLISION_RESPONSE then
 		if message.group == hashes.HOOK then
 			msg.post("game:/hook/root", hashes.RESET)
+		else
+			pprint(message)
+		end
+	elseif message_id == hashes.FISH_IN_BOAT then
+		local fish = fish_data[message.type]
+		local score = math.max(1, 1000000 / (fish.score_factor * fish.frequency))
+		msg.post("#gui", hashes.UPDATE_SCORE, { score = score, text = ("%s (+%d pts)"):format(fish.name, score) })
+	elseif message_id == hashes.HOOKED_BOTTOM then
+		print("hooked bottom")
+		self.lives = self.lives - 1
+		if self.lives == 0 then
+			msg.post("game:/hook/root", hashes.RESET, { force = true })
+		else
+			new_throw(self)
 		end
 	end
 end

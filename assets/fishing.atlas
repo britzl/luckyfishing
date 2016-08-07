@@ -46,6 +46,12 @@ images {
 images {
   image: "/assets/images/bubble_black_small.png"
 }
+images {
+  image: "/assets/images/finger.png"
+}
+images {
+  image: "/assets/images/finger_tap.png"
+}
 margin: 0
 extrude_borders: 1
 inner_padding: 0

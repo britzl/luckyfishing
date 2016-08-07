@@ -2,6 +2,7 @@ local hashes = require "game.hashes"
 local fish_data = require "game.fish.fish_data"
 
 go.property("type", 1)
+go.property("weight", 100)
 
 local MAX_SWIM_DISTANCE = 400
 local SWIM_DEPTH_FACTOR = 0.2
@@ -56,8 +57,9 @@ function on_message(self, message_id, message, sender)
 			go.cancel_animations(".", "position")
 			msg.post(".", "set_parent", { parent_id = message.other_id, keep_world_transform = 1 })
 		elseif message.group == hashes.BOAT then
-			--msg.post("game", hashes.FISH_IN_BOAT, { type = self.type })
-			msg.post("fishlog", hashes.FISH_IN_BOAT, { type = self.type })
+			msg.post("game:/game#script", hashes.FISH_IN_BOAT, { type = self.type })
+			go.delete()
+		elseif message.group == hashes.BOTTOM then
 			go.delete()
 		end
 	end 

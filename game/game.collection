@@ -1,5 +1,25 @@
 name: "game"
 collection_instances {
+  id: "bottom"
+  collection: "/game/bottom/bottom.collection"
+  position {
+    x: 0.0
+    y: -3000.0
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
   id: "bubbles"
   collection: "/game/bubbles/bubbles.collection"
   position {
@@ -41,11 +61,31 @@ collection_instances {
 }
 collection_instances {
   id: "hook"
-  collection: "/game/hook.collection"
+  collection: "/game/hook/hook.collection"
   position {
     x: 167.51073
     y: 29.387848
     z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
+  id: "tutorial"
+  collection: "/game/tutorial/tutorial.collection"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.95
   }
   rotation {
     x: 0.0
@@ -81,7 +121,7 @@ collection_instances {
 }
 scale_along_z: 0
 embedded_instances {
-  id: "fishlog"
+  id: "game"
   data: "components {\n"
   "  id: \"gui\"\n"
   "  component: \"/game/game.gui\"\n"
@@ -98,41 +138,6 @@ embedded_instances {
   "  }\n"
   "}\n"
   "components {\n"
-  "  id: \"script\"\n"
-  "  component: \"/game/fish/fishlog.script\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "}\n"
-  ""
-  position {
-    x: 163.71404
-    y: 148.14096
-    z: 0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-embedded_instances {
-  id: "game"
-  data: "components {\n"
   "  id: \"script\"\n"
   "  component: \"/game/game.script\"\n"
   "  position {\n"

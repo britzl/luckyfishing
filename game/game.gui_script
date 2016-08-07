@@ -8,6 +8,8 @@ function init(self)
 	self.score_node = gui.get_node("score")
 	self.log_node = gui.get_node("log")
 	gui.set_enabled(self.log_node, false)
+
+	self.life_nodes = { gui.get_node("life1"), gui.get_node("life2"), gui.get_node("life3") }
 end
 
 function final(self)
@@ -40,6 +42,10 @@ function on_message(self, message_id, message, sender)
 				gui.delete_node(log)
 			end)
 		end)
+	elseif message_id == hashes.UPDATE_LIVES then
+		for i,node in ipairs(self.life_nodes) do
+			gui.set_enabled(node, i <= message.lives)
+		end
 	end
 end
 

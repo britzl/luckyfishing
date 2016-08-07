@@ -12,6 +12,11 @@ components {
     z: 0.0
     w: 1.0
   }
+  properties {
+    id: "weight"
+    value: "10.0"
+    type: PROPERTY_TYPE_NUMBER
+  }
 }
 embedded_components {
   id: "fishtoboat"
@@ -23,6 +28,7 @@ embedded_components {
   "restitution: 0.5\n"
   "group: \"fish\"\n"
   "mask: \"boat\"\n"
+  "mask: \"bottom\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_SPHERE\n"
