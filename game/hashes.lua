@@ -9,6 +9,7 @@ M.HOOKED_FISH = hash("hooked_fish")
 M.HOOKED_BOTTOM = hash("hooked_bottom")
 M.FISH_IN_BOAT = hash("fish_in_boat")
 M.UPDATE_SCORE = hash("update_score")
+M.SET_SCORE = hash("set_score")
 M.UPDATE_LIVES = hash("update_lives")
 
 M.TUTORIAL_SWIPE = hash("tutorial_swipe")

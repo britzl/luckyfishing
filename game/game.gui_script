@@ -42,6 +42,10 @@ function on_message(self, message_id, message, sender)
 				gui.delete_node(log)
 			end)
 		end)
+	elseif message_id == hashes.SET_SCORE then
+		self.score = 0
+		self.visual_score = 0
+		gui.set_text(self.score_node, tostring(0))
 	elseif message_id == hashes.UPDATE_LIVES then
 		for i,node in ipairs(self.life_nodes) do
 			gui.set_enabled(node, i <= message.lives)

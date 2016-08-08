@@ -69,8 +69,6 @@ function on_message(self, message_id, message, sender)
 		else 
 			local speed = message.power * 0.6
 			speed = math.min(speed, 1500)
-			print(speed)
-			--speed = 200
 			self.force = vmath.vector3(speed * math.sin(message.angle), -speed * math.cos(message.angle), 0)
 			self.fishing = true
 			self.hooked_fish = {}
