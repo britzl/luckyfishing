@@ -14,7 +14,7 @@ components {
   }
   properties {
     id: "weight"
-    value: "25.0"
+    value: "15.0"
     type: PROPERTY_TYPE_NUMBER
   }
 }
