@@ -1,0 +1,5 @@
+local clouds = { hash("cloud1a"), hash("cloud2a") }
+
+function init(self)
+	msg.post("#sprite", "play_animation", { id = clouds[math.random(1, #clouds)] })
+end

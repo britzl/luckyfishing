@@ -1,5 +1,5 @@
 function init(self)
-	local width = 66
+	local width = 150
 	for i=1,math.ceil(6000 / width) do
 		local pos = vmath.vector3(-3000 + i * width, 0, 0)
 		local id = factory.create("#factory", pos)

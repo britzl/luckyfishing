@@ -1,56 +1,572 @@
 images {
-  image: "/assets/images/fish2.png"
-}
-images {
-  image: "/assets/images/fish3.png"
-}
-images {
-  image: "/assets/images/fish4.png"
-}
-images {
-  image: "/assets/images/fish5.png"
-}
-images {
-  image: "/assets/images/fish6.png"
-}
-images {
-  image: "/assets/images/fish7.png"
-}
-images {
   image: "/assets/images/hook.png"
-}
-images {
-  image: "/assets/images/fish1.png"
-}
-images {
-  image: "/assets/images/line.png"
 }
 images {
   image: "/assets/images/dot.png"
 }
 images {
-  image: "/assets/images/wave.png"
+  image: "/assets/images/water/wave.png"
 }
 images {
-  image: "/assets/images/cloud.png"
+  image: "/assets/images/bubbles/bubble_large.png"
 }
 images {
-  image: "/assets/images/boat.png"
+  image: "/assets/images/bubbles/bubble_small.png"
 }
 images {
-  image: "/assets/images/bubble_large.png"
+  image: "/assets/images/bubbles/bubble_black_small.png"
 }
 images {
-  image: "/assets/images/bubble_small.png"
+  image: "/assets/images/gui/finger.png"
 }
 images {
-  image: "/assets/images/bubble_black_small.png"
+  image: "/assets/images/gui/finger_tap.png"
 }
 images {
-  image: "/assets/images/finger.png"
+  image: "/assets/images/gui/texture_overlay_25percent.png"
 }
 images {
-  image: "/assets/images/finger_tap.png"
+  image: "/assets/images/gui/scoreboard.png"
+}
+images {
+  image: "/assets/images/clouds/cloud1a.png"
+}
+images {
+  image: "/assets/images/clouds/cloud1b.png"
+}
+images {
+  image: "/assets/images/clouds/cloud2a.png"
+}
+images {
+  image: "/assets/images/clouds/cloud2b.png"
+}
+images {
+  image: "/assets/images/water/water.png"
+}
+images {
+  image: "/assets/images/gui/logo.png"
+}
+images {
+  image: "/assets/images/gui/scoreboard_pin.png"
+}
+images {
+  image: "/assets/images/boat/boat0025.png"
+}
+images {
+  image: "/assets/images/bottom/ground.png"
+}
+images {
+  image: "/assets/images/bottom/ground_stone1.png"
+}
+images {
+  image: "/assets/images/bottom/ground_stone2.png"
+}
+images {
+  image: "/assets/images/bottom/ground_top.png"
+}
+animations {
+  id: "barracuda_swim"
+  images {
+    image: "/assets/images/fish/f10001.png"
+  }
+  images {
+    image: "/assets/images/fish/f10002.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 18
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "jellyfish_swim"
+  images {
+    image: "/assets/images/fish/jellyfish/jf0001.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0002.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0003.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0004.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0005.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0006.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0007.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0008.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0009.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0010.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0011.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0012.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0013.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0014.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0015.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0016.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0017.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0018.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0019.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0020.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0021.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0022.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0023.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0024.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0025.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0026.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0027.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0028.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0029.png"
+  }
+  images {
+    image: "/assets/images/fish/jellyfish/jf0030.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 18
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "trianglefish_swim"
+  images {
+    image: "/assets/images/fish/f20001.png"
+  }
+  images {
+    image: "/assets/images/fish/f20002.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 18
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "blobfish_swim"
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0001.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0002.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0003.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0004.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0005.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0006.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0007.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0008.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0009.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0010.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0011.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0012.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0013.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0014.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0015.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0016.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0017.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0018.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0019.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0020.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0021.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0022.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0023.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0024.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0025.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0026.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0027.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0028.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0029.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0030.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0031.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0032.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0033.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0034.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0035.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0036.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0037.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0038.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0039.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0040.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0041.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0042.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0043.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0044.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0045.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0046.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0047.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0048.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0049.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0050.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0051.png"
+  }
+  images {
+    image: "/assets/images/fish/blobfish/blobfish0052.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 18
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "smallfish_swim"
+  images {
+    image: "/assets/images/fish/f40001.png"
+  }
+  images {
+    image: "/assets/images/fish/f40002.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 18
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "fatfish_swim"
+  images {
+    image: "/assets/images/fish/f30001.png"
+  }
+  images {
+    image: "/assets/images/fish/f30002.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 18
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "starfish_swim"
+  images {
+    image: "/assets/images/fish/starfish/starfish0001.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0002.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0003.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0004.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0005.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0006.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0007.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0008.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0009.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0010.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0011.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0012.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0013.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0014.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0015.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0016.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0017.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0018.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0019.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0020.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0021.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0022.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0023.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0024.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0025.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0026.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0027.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0028.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0029.png"
+  }
+  images {
+    image: "/assets/images/fish/starfish/starfish0030.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 18
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "blackhead_swim"
+  images {
+    image: "/assets/images/fish/f50001.png"
+  }
+  images {
+    image: "/assets/images/fish/f50002.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 18
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "seaweed"
+  images {
+    image: "/assets/images/seaweed/seaweed0001.png"
+  }
+  images {
+    image: "/assets/images/seaweed/seaweed0002.png"
+  }
+  images {
+    image: "/assets/images/seaweed/seaweed0003.png"
+  }
+  images {
+    image: "/assets/images/seaweed/seaweed0004.png"
+  }
+  images {
+    image: "/assets/images/seaweed/seaweed0005.png"
+  }
+  images {
+    image: "/assets/images/seaweed/seaweed0006.png"
+  }
+  images {
+    image: "/assets/images/seaweed/seaweed0007.png"
+  }
+  images {
+    image: "/assets/images/seaweed/seaweed0008.png"
+  }
+  images {
+    image: "/assets/images/seaweed/seaweed0009.png"
+  }
+  images {
+    image: "/assets/images/seaweed/seaweed0010.png"
+  }
+  images {
+    image: "/assets/images/seaweed/seaweed0011.png"
+  }
+  images {
+    image: "/assets/images/seaweed/seaweed0012.png"
+  }
+  images {
+    image: "/assets/images/seaweed/seaweed0013.png"
+  }
+  images {
+    image: "/assets/images/seaweed/seaweed0014.png"
+  }
+  images {
+    image: "/assets/images/seaweed/seaweed0015.png"
+  }
+  images {
+    image: "/assets/images/seaweed/seaweed0016.png"
+  }
+  images {
+    image: "/assets/images/seaweed/seaweed0017.png"
+  }
+  images {
+    image: "/assets/images/seaweed/seaweed0018.png"
+  }
+  images {
+    image: "/assets/images/seaweed/seaweed0019.png"
+  }
+  images {
+    image: "/assets/images/seaweed/seaweed0020.png"
+  }
+  images {
+    image: "/assets/images/seaweed/seaweed0021.png"
+  }
+  images {
+    image: "/assets/images/seaweed/seaweed0022.png"
+  }
+  images {
+    image: "/assets/images/seaweed/seaweed0023.png"
+  }
+  images {
+    image: "/assets/images/seaweed/seaweed0024.png"
+  }
+  images {
+    image: "/assets/images/seaweed/seaweed0025.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 18
+  flip_horizontal: 0
+  flip_vertical: 0
 }
 margin: 0
 extrude_borders: 1

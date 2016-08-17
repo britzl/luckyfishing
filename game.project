@@ -1,6 +1,6 @@
 [project]
 title = Lucky Fishing
-version = 0.1
+version = 1.0
 dependencies = http://www.defold.com/p/1170/27915/archive
 
 [bootstrap]
@@ -34,6 +34,7 @@ app_icon_96x96 = /appicons/icon_96.png
 app_icon_72x72 = /appicons/icon_72.png
 app_icon_144x144 = /appicons/icon_144.png
 app_icon_192x192 = /appicons/icon_192.png
+version_code = 2
 
 [ios]
 bundle_identifier = com.bitfront.luckyfishing

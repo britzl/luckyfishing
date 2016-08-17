@@ -51,6 +51,15 @@ return {
 		depth = { min = -500, max = -2000 },
 		factory = "#starfish_factory",
 	}, 
+	[8] = {
+		name = "Blobfish",
+		score_factor = 1000,
+		frequency = 10,
+		distance_factor = 0,
+		depth_factor = 0,
+		depth = { min = -2990, max = -3020 },
+		factory = "#blobfish_factory",
+	}, 
 }
 
 

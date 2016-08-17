@@ -3,6 +3,7 @@ local fish_data = require "game.fish.fish_data"
 
 go.property("type", 1)
 go.property("weight", 100)
+go.property("anim_swim", hash(""))
 
 local MAX_SWIM_DISTANCE = 400
 local SWIM_DEPTH_FACTOR = 0.2
@@ -46,13 +47,27 @@ end
 function init(self)
 	self.original_position = go.get_position()
 	self.last_desitination = go.get_position()
-	msg.post("#sprite", "play_animation", { id = hash("fish" .. self.type) })
+	--msg.post("#sprite", "play_animation", { id = hash("fish" .. self.type) })
 	swim_to_random_position(self)
 end
+
+--[[function update(self, dt)
+	if self.hooked then
+		
+		local destination = go.get_position(msg.url("game:/game"))
+		local pos = go.get_position()
+		local angle = math.atan2(destination.x - pos.x, pos.y - destination.y)
+		local dx = angle - self.current_angle
+		self.current_angle = self.current_angle + dx * dt
+		go.set_rotation(vmath.quat_axis_angle(vmath.vector3(0, 0, -1), self.current_angle))
+	end
+end--]]
 
 function on_message(self, message_id, message, sender)
 	if message_id == hashes.COLLISION_RESPONSE then
 		if message.group == hashes.HOOK then
+			self.hooked = true
+			self.current_angle = 0
 			msg.post("#fishtohook", "disable")
 			go.cancel_animations(".", "position")
 			msg.post(".", "set_parent", { parent_id = message.other_id, keep_world_transform = 1 })

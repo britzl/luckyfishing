@@ -11,6 +11,7 @@ end
 
 function init(self)
 	self.original_position = go.get_position()
+	self.original_hook_rotation = go.get_rotation("hook")
 	self.original_world_position = go.get_world_position()
 	msg.post("camera", "acquire_camera_focus")
 	self.gravity = vmath.vector3(0, -550, 0)
@@ -62,17 +63,20 @@ function on_message(self, message_id, message, sender)
 	if message_id == hashes.THROW then
 		local degrees = geometry.to_degrees(message.angle)
 		self.line_length = message.line_length
+		print(degrees)
 		if distance_to_boat(self) > 10 then
 			print("HOOK NOT ON BOAT")
-		elseif degrees < 90 or degrees > 180 then
-			print("BAD THROW")
-		else 
+		--[[elseif degrees < 90 or degrees > 180 then
+			print("BAD THROW")--]]
+		elseif degrees <= -90 or degrees >= 90 then
 			local speed = message.power * 0.6
 			speed = math.min(speed, 1500)
 			self.force = vmath.vector3(speed * math.sin(message.angle), -speed * math.cos(message.angle), 0)
 			self.fishing = true
 			self.hooked_fish = {}
 			self.weight = vmath.vector3(0, 0, 0)
+		else 
+			print("BAD THROW")
 		end
 	elseif message_id == hashes.REEL_IN then
 		if is_in_water() then
@@ -85,6 +89,7 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hashes.RESET then
 		if self.reeling_in or message.force then
 			go.set_position(self.original_position)
+			go.set_rotation(self.original_hook_rotation, "hook")
 			self.fishing = false
 			self.reeling_in = false
 			msg.post("line", hashes.RESET)
