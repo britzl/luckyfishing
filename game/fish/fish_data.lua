@@ -53,7 +53,7 @@ return {
 	}, 
 	[8] = {
 		name = "Blobfish",
-		score_factor = 1000,
+		score_factor = 5,
 		frequency = 10,
 		distance_factor = 0,
 		depth_factor = 0,

@@ -34,7 +34,9 @@ archive() {
 	else
 		echo "${title_no_space}_${platform}.zip"
 		rm -rf "${title_no_space}_${platform}.zip"
-		zip -r -q "${title_no_space}_${platform}.zip" build/${platform}/*
+		cd build/${platform}
+		zip -r -q "../../${title_no_space}_${platform}.zip" *
+		cd ../..
 	fi
 }
 

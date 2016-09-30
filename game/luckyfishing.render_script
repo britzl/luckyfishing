@@ -29,7 +29,7 @@ function update(self)
 	render.set_view(vmath.matrix4())
 	render.set_projection(vmath.matrix4_orthographic(0, render.get_window_width(), 0, render.get_window_height(), -1, 1))
 
-	render_helper.render_fixed_aspect_ratio(self.view)
+	render_helper.set_fixed_aspect_ratio(self.view, 0, 0, render.get_window_width(), render.get_window_height())
 
 	render.draw(self.tile_pred)
 	render.draw(self.particle_pred)
