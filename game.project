@@ -1,7 +1,7 @@
 [project]
 title = Lucky Fishing
 version = 1.0
-dependencies = http://www.defold.com/p/1170/27915/archive
+dependencies = https://github.com/britzl/ludobits/archive/1.1.1.zip
 
 [bootstrap]
 main_collection = /game/game.collectionc

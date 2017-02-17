@@ -61,7 +61,7 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hashes.THROW then
-		local degrees = geometry.to_degrees(message.angle)
+		local degrees = math.deg(message.angle)
 		self.line_length = message.line_length
 		print(degrees)
 		if distance_to_boat(self) > 10 then

@@ -16,7 +16,7 @@ function final(self)
 end
 
 function update(self, dt)
-	flow.update()
+	flow.update(dt)
 	local score_diff = self.score - self.visual_score
 	if score_diff ~= 0 then
 		self.visual_score = self.visual_score + math.ceil(score_diff * dt)
